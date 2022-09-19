@@ -585,6 +585,28 @@
                 }
             }
         },
+        "/roles": {
+            "get": {
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Get list of Roles",
+                "description": "Returns list of Role",
+                "operationId": "indexRole",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Roles"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/users": {
             "get": {
                 "tags": [
@@ -998,6 +1020,58 @@
                 },
                 "type": "object"
             },
+            "Role": {
+                "title": "Roles",
+                "description": "Role model",
+                "required": [],
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "id of Role",
+                        "type": "integer",
+                        "readOnly": "true",
+                        "example": "1"
+                    },
+                    "name_role": {
+                        "title": "name_role",
+                        "description": "name of Role",
+                        "type": "string",
+                        "example": "Role user"
+                    },
+                    "code_role": {
+                        "title": "code_role",
+                        "description": "Code of role",
+                        "type": "integer",
+                        "example": "0"
+                    },
+                    "created_at": {
+                        "title": "created_at",
+                        "type": "dateTime",
+                        "readOnly": "true",
+                        "example": "2022-07-04T02:41:42.336Z"
+                    },
+                    "updated_at": {
+                        "title": "updated_at",
+                        "type": "dateTime",
+                        "readOnly": "true",
+                        "example": "2022-07-04T02:41:42.336Z"
+                    }
+                },
+                "type": "object"
+            },
+            "Roles": {
+                "title": "Roles",
+                "properties": {
+                    "data": {
+                        "title": "data",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Role"
+                        }
+                    }
+                },
+                "type": "object"
+            },
             "User": {
                 "title": "User",
                 "description": "User model",
@@ -1077,6 +1151,16 @@
                 "name": "Product_id",
                 "in": "path",
                 "description": "Id of Product",
+                "required": true,
+                "schema": {
+                    "type": "integer",
+                    "example": "1"
+                }
+            },
+            "Role--id": {
+                "name": "Role_id",
+                "in": "path",
+                "description": "Id of Role",
                 "required": true,
                 "schema": {
                     "type": "integer",

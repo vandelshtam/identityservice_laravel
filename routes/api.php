@@ -40,4 +40,5 @@ Route::group([
 Route::apiResource('person', PersonController::class);
 Route::apiResource('products', ProductController::class);
 Route::apiResource('books', BookController::class);
+Route::apiResource('roles', RoleController::class);
 //Route::get('books/{$book_id}', 'BookController@show');

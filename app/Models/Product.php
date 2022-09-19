@@ -44,9 +44,8 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'sku',
-        'price',
+        'name_role',
+        'code_role',
         'created_at',
         'updated_at',
     ];

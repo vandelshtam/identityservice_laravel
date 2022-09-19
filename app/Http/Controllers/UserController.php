@@ -367,9 +367,7 @@ class UserController extends Controller
      */
     public function destroy(User $user, $id)
     {
-        //$user->delete();
-        //return response()->noContent();
-        //$user = User::all()->where('id', 2);
+        
         if(!User::find($id)){
             return (new GeneralResponse)->default_json(
                 $success=false,
