@@ -103,9 +103,9 @@ class AuthController extends Controller
     */
     public function me()
     {
-        // if (!auth()->user()) {
-        //     return response()->json(['error' => 'Unauthorized'], 401);
-        // }
+        if (!auth()->user()) {
+            return response()->json(['error' => 'Unauthorized user'], 401);
+        }
         //$this->middleware('jwt.auth');   
         $payload = auth()->payload();
 

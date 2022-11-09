@@ -17,10 +17,10 @@ class UserController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('jwt.auth');        
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('jwt.auth');        
+    // }
 
      /**
      * @OA\Get(

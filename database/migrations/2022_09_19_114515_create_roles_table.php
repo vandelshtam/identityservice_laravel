@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name_role');
             $table->integer('code_role');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

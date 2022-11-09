@@ -605,6 +605,90 @@
                         }
                     }
                 }
+            },
+            "post": {
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Insert a new Role",
+                "description": "Insert a new Role",
+                "operationId": "storeRole",
+                "requestBody": {
+                    "description": "Role to create",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "data": {
+                                        "$ref": "#/components/schemas/Role"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Role created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/Role"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation exception"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/roles/{role_id}": {
+            "get": {
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Show a Role from his Id",
+                "description": "Show a Role from his Id",
+                "operationId": "showRole",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/Role--id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/Role"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Role not found"
+                    }
+                }
             }
         },
         "/users": {
@@ -1158,7 +1242,7 @@
                 }
             },
             "Role--id": {
-                "name": "Role_id",
+                "name": "role_id",
                 "in": "path",
                 "description": "Id of Role",
                 "required": true,

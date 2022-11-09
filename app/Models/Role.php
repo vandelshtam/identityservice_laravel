@@ -34,7 +34,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @OA\Parameter(
  *      parameter="Role--id",
  *      in="path",
- *      name="Role_id",
+ *      name="role_id",
  *      required=true,
  *      description="Id of Role",
  *      @OA\Schema(

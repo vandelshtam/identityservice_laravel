@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('sku');
             $table->integer('price');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
