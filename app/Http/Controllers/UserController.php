@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Response\GeneralResponse;
 use App\Http\Requests\UpdateUserRequest;
 use Symfony\Component\HttpFoundation\Response;
@@ -385,5 +386,67 @@ class UserController extends Controller
             $data=[],
             $code= Response::HTTP_NO_CONTENT
         );
+    }
+
+    /**
+     * @OA\Get(
+     *  operationId="Me show",
+     *  summary="User me show",
+     *  description="User me show",
+     *  security={{ "bearerAuth": {} }},
+     *  tags={"Users"},
+     *      path="/users/me",
+      *      summary="Get detail User",
+     *      description="Returns User data",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent(ref="#/components/schemas/User")
+     *       ),
+     *  *      @OA\Response(
+     *          response=202,
+     *          description="Successful operation",
+     *          @OA\JsonContent(ref="#/components/schemas/User")
+     *       ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     * )
+     * @return \Illuminate\Http\Response
+     */
+    public function me()
+    {
+        if (!auth()->user()) {
+            return response()->json(['error' => 'Unauthorized user'], 401);
+        }
+        //$this->middleware('jwt.auth');   
+        $payload = auth()->payload();
+
+        try {
+            $user = auth()->userOrFail();
+        } catch (\Tymon\JWTAuth\Exceptions\UserNotDefinedException $e) {
+
+            return response()->json(['error' => 'user not found'], 401);
+        }
+        // then you can access the claims directly e.g.
+        // $payload->get('sub'); // = 123
+        // $payload['jti']; // = 'asfe4fq434asdf'
+        // $payload('exp'); // = 123456
+        // $payload->toArray(); // = ['sub' => 123, 'exp' => 123456, 'jti' => 'asfe4fq434asdf'] etc
+        return response()->json([
+            'auth_user' => $user,
+            'token_info' => $payload->toArray(),
+            ]);
+    
+        //return response()->json($payload->toArray());
     }
 }
