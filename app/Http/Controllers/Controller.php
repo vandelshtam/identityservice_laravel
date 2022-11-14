@@ -10,7 +10,7 @@ use Illuminate\Routing\Controller as BaseController;
 
 /**
  * @OA\Info(
- *    title="Identityservice API Swagger JWT Laravel",
+ *    title="Identityservice micriservice API Swagger JWT Laravel",
  *    version="1.0.0",
  * ),
  *   @OA\SecurityScheme(
