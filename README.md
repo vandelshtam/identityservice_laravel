@@ -10,9 +10,15 @@
 
 ## Project - Cometa Chat 
 ## Micriservice - Identity service
-## Applied technologies## How to install:
-### swagger https://swagger.io/      https://github.com/DarkaOnLine/L5-Swagger/wiki/Installation-&-Configuration
-### jwt-auth https://jwt-auth.readthedocs.io/en/develop/- clone this project
+## Applied technologies:
+### swagger:
+https://swagger.io/     
+https://github.com/DarkaOnLine/L5-Swagger/wiki/Installation-&-Configuration
+### jwt-auth 
+https://jwt-auth.readthedocs.io/en/develop/
+
+## How to install:
+- clone this project
 - install vendor laravel
 ```bash
 composer install
