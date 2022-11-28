@@ -53,7 +53,8 @@ php artisan server
 http://localhost:8000
 ## NOTE
 
-- Default Password user : asdf@gmail.com<br>
+- Default Password user : vldmr1@gmail.com<br>
+- - Default Password user : mvlju977@gmail.com<br>
 ```php
-password: 123456
+password: 1234567890
 ```
